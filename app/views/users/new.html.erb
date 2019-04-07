@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <%= render "layouts/header" %>
+  <div class="main">
+    <div class="about-wrapper">
+      <div class="home-about">
+        <section>
+          <h1>Treco で自分のベストを</h1>
+          <h1>更新しよう</h1>
+        </section>
+        <section>
+          <h2>Treco はあなたのトレーニング内容を</h2>
+          <h2>記録するノートです。</h2>
+        </section>            
+      </div>
+    </div>
+    <div class="signup-wrapper">
+      <div class="signup">
+        <h2>新規登録</h2>
+        <%= form_for @user do |f| %>
+          <%= f.text_field :name, placeholder: "ニックネーム", class: "form" %>
+          <%= f.email_field :email, placeholder: "メールアドレス", class: "form" %>        
+          <%= f.password_field :password, placeholder: "パスワード", class: "form" %>
+          <%= f.submit "登録する", class: "submit" %>
+        <% end %>
+      </div>    
+    </div>
+  </div>
+</div>
