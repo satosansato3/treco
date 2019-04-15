@@ -1,50 +1,41 @@
-<header>
-  <div class="container px-0">
-    <nav>
-      <div class="logo">
-        <%= link_to "Treco", root_path %>
+<header class="home-bg home-header-height">
+  <div class="container px-0 home-bg">
+    <nav class="navbar navbar-expand-md navbar-light">
+      <%= link_to "Treco", root_path, class: "navbar-brand" %>
+      <button class="navbar-toggler" data-toggle="collapse"
+       data-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="menu" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+          <li class="nav-item"><%= link_to "ログイン", "#",  class: "nav-link text-dark mx-1 h5" %></li>
+          <li class="nav-item"><%= link_to "お問い合わせ", help_path,  class: "nav-link text-dark mx-1 h5" %></li>
+        </ul>        
       </div>
-      <ul class="right-header">
-        <li><%= link_to "ログイン", "#",  class: "login"%></li>
-        <li><%= link_to "お問い合わせ", help_path,  class: "help" %></li>
-      </ul>
     </nav>
   </div>
 </header>
-<main>
+<main class="home-bg home-main-size">
   <section>
-    
-  </section>
-  <section>
-    
+    <div class="container home-bg d-flex">
+      <div class="row flex-fill align-self-center">
+        <div class="col-8">
+          <h1>Treco で自分のベストを</h1>
+          <h1>更新しよう</h1>
+          <h4>Treco はあなたのトレーニング内容を</h4>
+          <h4>記録するノートです。</h4>
+        </div>
+        <div class="col-4 px-5">
+          <h2>新規登録</h2>
+          <%= form_for @user do |f| %>
+            <%= f.text_field :name, placeholder: "ニックネーム", class: "form-control my-4" %>
+            <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control mb-4" %>        
+            <%= f.password_field :password, placeholder: "パスワード", class: "form-control mb-4" %>
+            <%= f.submit "登録する", class: "btn btn-primary w-100" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </section>
 </main>
   
-  
-  
-  <div class="main">
-    <div class="about-wrapper">
-      <div class="home-about">
-        <section>
-          <h1>Treco で自分のベストを</h1>
-          <h1>更新しよう</h1>
-        </section>
-        <section>
-          <h2>Treco はあなたのトレーニング内容を</h2>
-          <h2>記録するノートです。</h2>
-        </section>            
-      </div>
-    </div>
-    <div class="signup-wrapper">
-      <div class="signup">
-        <h2>新規登録</h2>
-        <%= form_for @user do |f| %>
-          <%= f.text_field :name, placeholder: "ニックネーム", class: "form" %>
-          <%= f.email_field :email, placeholder: "メールアドレス", class: "form" %>        
-          <%= f.password_field :password, placeholder: "パスワード", class: "form" %>
-          <%= f.submit "登録する", class: "submit" %>
-        <% end %>
-      </div>    
-    </div>
-  </div>
-</div>

@@ -1,6 +1,5 @@
 html {
   height: 100%;
-  overflow: hidden;
 }
 
 body {
@@ -9,6 +8,33 @@ body {
 }
 
 // home
+
+.home-bg {
+  background: linear-gradient(90deg, #91e4fb 66.666%, #ffffff 33.334%);
+}
+
+.navbar-brand {
+  font-family: 'Caveat', cursive;
+  color: black;
+  font-size: 50px !important;
+  margin: 0;
+  text-decoration:none;
+}
+
+.home-main-size {
+  height: 90%;
+  section {
+    height: 100%;
+    .container {
+      height: 100%;
+    }
+  }
+}
+
+.home-header-height {
+  height: 10%;
+}
+
 
 // .wrapper {
 //   height: 100%;
