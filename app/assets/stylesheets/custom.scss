@@ -16,13 +16,17 @@ body {
 .navbar-brand {
   font-family: 'Caveat', cursive;
   color: black;
-  font-size: 50px !important;
   margin: 0;
   text-decoration:none;
 }
 
+.home-brand-size {
+  font-size: 50px !important;  
+}
+
 .home-main-size {
-  height: 90%;
+  height: 100%;
+  overflow-y: hidden;
   section {
     height: 100%;
     .container {
@@ -31,8 +35,42 @@ body {
   }
 }
 
-.home-header-height {
-  height: 10%;
+// .home-header-height {
+//   height: 10%;
+//   min-height: 74.67px;
+// }
+
+// content
+
+.content-bg {
+  background: #91e4fb;
+}
+
+.content-bg-size {
+  overflow-y: hidden;
+}
+
+.content-brand-size {
+  font-size: 30px !important;  
+}
+
+.nav-link.active {
+  background: #708090 !important;
+}
+
+.nav-bg-color{
+  background: #4682b4;
+  a {
+    &:hover {
+      background: #708090;
+      
+    }
+    &.text-light{
+      &:hover {
+        color: #fff !important;
+      }      
+    }
+  }
 }
 
 
