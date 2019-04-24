@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-04-17 13:24:35
+  swim: 1.5
+  bike: 1.5
+  run: 1.5
+  content: MyText
+  user: one
+
+two:
+  date: 2019-04-17 13:24:35
+  swim: 1.5
+  bike: 1.5
+  run: 1.5
+  content: MyText
+  user: two

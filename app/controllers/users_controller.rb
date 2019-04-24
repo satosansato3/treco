@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @monthly_record = @user.microposts.where({ month: Time.current.month, 
+    year: Time.current.year })
   end
   
   def new

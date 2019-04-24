@@ -16,27 +16,42 @@
   </div>
 </header>
 
-<main class="h-100">
-  <div class="container-fluid h-100 w-100 p-0 m-0 content-bg-size">
-    <div class="row h-100">
-      <aside class="col-2 pr-0 nav-bg-color">
-        <div class="flex-column">
-          <span class="nav-link text-light rounded-0 border 
-          border-dark border-bottom-0">メニュー</span>
-        </div>
-        <div class="nav flex-column nav-pills pill-color">
-          <%= link_to "私の練習記録", "#", data: { toggle: "pill" }, class: 
-          "nav-link text-light text-center rounded-0 border 
-          border-dark border-bottom-0" %>
-          <%= link_to "友達", "#", data: { toggle: "pill" }, class: 
-          "nav-link text-light text-center rounded-0 border 
-          border-dark" %>
-        </div>
-      </aside>    
-    </div>    
-  </div>
 
+<div class="container-fluid h-100 w-100 p-0 m-0 content-bg-size">
+  <div class="row h-100">
+    <aside class="col-2 pr-0 nav-bg-color">
+      <div class="flex-column">
+        <span class="nav-link text-light rounded-0 border 
+        border-dark border-bottom-0">メニュー</span>
+      </div>
+      <div class="nav flex-column nav-pills pill-color">
+        <%= link_to "私の練習記録", "#", data: { toggle: "pill" }, class: 
+        "nav-link text-light text-center rounded-0 border 
+        border-dark border-bottom-0" %>
+        <%= link_to "友達", "#", data: { toggle: "pill" }, class: 
+        "nav-link text-light text-center rounded-0 border 
+        border-dark" %>
+      </div>
+    </aside>    
+    <main class="col-10 p-5">
+        <section>
+          <span class="h4">今月の練習記録</span>
+          <table class="table mt-4">
+            <thead>
+              <tr><th>スイム</th><th>バイク</th><th>ラン</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= @monthly_record.sum(:swim) %> km</td>
+                <td><%= @monthly_record.sum(:bike) %> km</td>
+                <td><%= @monthly_record.sum(:run) %> km</td>
+              </tr>
+            </tbody>
+          </table>   
+        </section>
+    </main>
+  </div>    
+</div>
 
-</main>
 
 
