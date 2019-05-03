@@ -32,6 +32,7 @@
         </div>
         <div class="col-4 px-5" id="signup-form">
           <h2>新規登録</h2>
+          <%= render 'shared/error_messages' %>
           <%= form_for @user do |f| %>
             <%= f.text_field :name, placeholder: "ニックネーム", class: "form-control my-4" %>
             <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control mb-4" %>        
