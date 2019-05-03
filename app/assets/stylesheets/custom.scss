@@ -35,10 +35,25 @@ body {
   }
 }
 
-// .home-header-height {
-//   height: 10%;
-//   min-height: 74.67px;
-// }
+#login-form {
+  display: none;
+}
+
+#signup-btn {
+  display: none;
+}
+
+#signup-btn {
+  cursor: pointer;
+}
+
+#login-btn {
+  cursor: pointer;
+}
+
+.home-row {
+  min-height: 286px; 
+}
 
 // content
 

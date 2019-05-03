@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    
+    # TODO:競技ごとにリクエスト投げるのではなく、まとめて1回リクエストして、
+    #そのあと別々に切り取る
     @monthly_record = @user.microposts.where({ month: Time.current.month, 
     year: Time.current.year })
   end
@@ -12,8 +15,11 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
-    @user.save
-    redirect_to root_url
+    if @user.save
+      redirect_to @user
+    else
+      render new
+    end
   end
   
   private
