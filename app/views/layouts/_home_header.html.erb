@@ -1,0 +1,18 @@
+<header class="home-bg home-header-height">
+  <div class="container px-0 home-bg h-100">
+    <nav class="navbar navbar-expand-md navbar-light py-0">
+      <%= link_to "Treco", root_path, data: {"turbolinks" => false}, class: "navbar-brand py-0 home-brand-size" %>
+      <button class="navbar-toggler" data-toggle="collapse"
+       data-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="menu" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+          <li class="nav-item"><p class="nav-link text-dark mx-1 h5" id="signup-btn">新規登録</p></li>
+          <li class="nav-item"><p class="nav-link text-dark mx-1 h5" id="login-btn">ログイン</p></li>
+          <li class="nav-item"><%= link_to "お問い合わせ", help_path,  class: "nav-link text-dark mx-1 h5" %></li>
+        </ul>        
+      </div>
+    </nav>
+  </div>
+</header>

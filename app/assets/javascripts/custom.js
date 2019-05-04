@@ -1,5 +1,5 @@
 /* global $ */
-$(function(){
+document.addEventListener("turbolinks:load", function() {
   $("#signup-btn, #login-btn").on("click", function(){
     $("#signup-btn").toggle();
     $("#login-btn").toggle();
@@ -7,4 +7,3 @@ $(function(){
     $("#login-form").toggle();
   })
 })
-
