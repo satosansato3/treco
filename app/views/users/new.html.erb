@@ -17,7 +17,7 @@
         <%= form_for(@user, url: root_path) do |f| %>
           <%= f.text_field :name, placeholder: "ニックネーム", class: "form-control my-4" %>
           <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control mb-4" %>        
-          <%= f.password_field :password, placeholder: "パスワード", class: "form-control mb-4" %>
+          <%= f.password_field :password, placeholder: "パスワード", class: "form-control mb-3" %>
           <%= f.submit "登録する", class: "btn btn-primary w-100" %>
         <% end %>
       </div>
@@ -25,9 +25,14 @@
         <h2>ログイン</h2>
         <%= form_for(:session, url: login_path) do |f| %>
           <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control my-4" %>        
-          <%= f.password_field :password, placeholder: "パスワード", class: "form-control mb-4" %>
+          <%= f.password_field :password, placeholder: "パスワード", class: "form-control mb-3" %>
+          <div class="custom-control custom-checkbox mb-1">
+            <%= f.check_box :remember_me, checked: true, class: "custom-control-input" %>
+            <%= f.label :remember_me, "ログインしたままにする", class: "custom-control-label" %>
+          </div>
           <%= f.submit "ログイン", class: "btn btn-primary w-100" %>
         <% end %>
+
       </div>
     </div>
   </section>

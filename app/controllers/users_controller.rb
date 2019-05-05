@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to @user
     else
-      render "new"
+      render layout: "home", action: "new"
     end
   end
   
