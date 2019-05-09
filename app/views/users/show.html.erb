@@ -1,4 +1,19 @@
-<div class="container-fluid h-100 w-100 p-0 m-0 content-bg-size">
+<div id="my-page" class="container-fluid h-100 px-0 m-0 content-bg-size">
+  <div id="training-create">
+  </div>
+  <div id="training-wrapper">
+    <div id="training">
+      <%= form_for(@micropost) do |f| %>
+        <%= f.label :swim, "スイム" %>
+        <%= f.number_field :swim %>
+        <%= f.label :bike, "バイク" %>
+        <%= f.number_field :bike %>
+        <%= f.label :run, "ラン" %>
+        <%= f.number_field :run %>
+      <% end %>
+    </div>          
+  </div>
+
   <div class="row h-100">
     <aside class="col-2 pr-0 nav-bg-color">
       <div class="flex-column">
@@ -15,167 +30,173 @@
       </div>
     </aside>    
     <main class="col-10 p-5">
-        <section>
-          <span class="h4">４月の練習記録</span>
-          <table class="table mt-4">
-            <thead>
-              <tr><th>スイム</th><th>バイク</th><th>ラン</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><%= @monthly_record.sum(:swim) %> km</td>
-                <td><%= @monthly_record.sum(:bike) %> km</td>
-                <td><%= @monthly_record.sum(:run) %> km</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="col-3" style="display: inline-block;">
-            <canvas id="swimChart" width="100" height="100"></canvas>
-          </div>
-          <div class="col-3" style="display: inline-block;">
-            <canvas id="bikeChart" width="100" height="100"></canvas>
-          </div>
-          <div class="col-3" style="display: inline-block;">
-            <canvas id="runChart" width="100" height="100"></canvas>
-          </div>
-          <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-0">友達の練習記録</h6>
-            <div class="media text-muted pt-3">
-              <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-              <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">サトウ</strong>
-                今日は湘南まで走ってきました！
-              </p>
-            </div>
-            <div class="media text-muted pt-3">
-              <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"/><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text></svg>
-              <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">ジーコ</strong>
-                大会ががんばる！
-              </p>
-            </div>
-            <div class="media text-muted pt-3">
-              <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"/><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
-              <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">コージ</strong>
-                疲れた・・・
-              </p>
-            </div>
-            <small class="d-block text-right mt-3">
-              <a href="#">もっと見る</a>
-            </small>
-          </div>
+      <section>
+        <%= button_tag type: "button", id: "training-btn", class: "btn btn-primary mb-3" do %>
+          <%= content_tag(:span, "練習記録をつける", class: "h4 p-3") %>
+        <% end %>
+      </section>
 
-          <script>
-          var swim_ctx = document.getElementById("swimChart").getContext('2d');
-          var swimChart = new Chart(swim_ctx, {
-              type: 'line',
-              data: {
-                  labels: ["4/1","4/10", "4/20", "4/30"],
-                  datasets: [{
-                      label: "スイム",
-                      data: [{
-                        x: "4/4",
-                        y: 20
-                      }, {
-                        x: "4/12",
-                        y: 100
-                      }, {
-                        x: "4/28",
-                        y: 30
-                      }],
-                      backgroundColor: '#66CCFF',
-                      borderColor: '#66CCFF',
-                      fill: false,
-                      lineTension: 0
-                    }]},
-              options: {
-                scales: {
-                    xAxes: [{
-                      type: 'time',
-                      time: {
-                          displayFormats: {
-                              quarter: 'MMM YYYY'
-                          }
-                      }
-                    }]
-                }
-              }
-          });
+      <section>
+        <span class="h4">４月の練習記録</span>
+        <table class="table mt-4">
+          <thead>
+            <tr><th>スイム</th><th>バイク</th><th>ラン</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @monthly_record.sum(:swim) %> km</td>
+              <td><%= @monthly_record.sum(:bike) %> km</td>
+              <td><%= @monthly_record.sum(:run) %> km</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="col-3" style="display: inline-block;">
+          <canvas id="swimChart" width="100" height="100"></canvas>
+        </div>
+        <div class="col-3" style="display: inline-block;">
+          <canvas id="bikeChart" width="100" height="100"></canvas>
+        </div>
+        <div class="col-3" style="display: inline-block;">
+          <canvas id="runChart" width="100" height="100"></canvas>
+        </div>
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+          <h6 class="border-bottom border-gray pb-2 mb-0">友達の練習記録</h6>
+          <div class="media text-muted pt-3">
+            <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <strong class="d-block text-gray-dark">サトウ</strong>
+              今日は湘南まで走ってきました！
+            </p>
+          </div>
+          <div class="media text-muted pt-3">
+            <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"/><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text></svg>
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <strong class="d-block text-gray-dark">ジーコ</strong>
+              大会ががんばる！
+            </p>
+          </div>
+          <div class="media text-muted pt-3">
+            <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"/><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <strong class="d-block text-gray-dark">コージ</strong>
+              疲れた・・・
+            </p>
+          </div>
+          <small class="d-block text-right mt-3">
+            <a href="#">もっと見る</a>
+          </small>
+        </div>
 
-          var bike_ctx = document.getElementById("bikeChart").getContext('2d');
-          var bikeChart = new Chart(bike_ctx, {
-              type: 'line',
-              data: {
-                  labels: ["4/1","4/10", "4/20", "4/30"],
-                  datasets: [{
-                      label: "バイク",
-                      data: [{
-                        x: "4/4",
-                        y: 20
-                      }, {
-                        x: "4/12",
-                        y: 100
-                      }, {
-                        x: "4/28",
-                        y: 30
-                      }],
-                      backgroundColor: '#66CC33',
-                      borderColor: '#66CC33',
-                      fill: false,
-                      lineTension: 0
-                    }]},
-              options: {
-                scales: {
-                    xAxes: [{
-                      type: 'time',
-                      time: {
-                          displayFormats: {
-                              quarter: 'MMM YYYY'
-                          }
-                      }
-                    }]
-                }
+        <script>
+        var swim_ctx = document.getElementById("swimChart").getContext('2d');
+        var swimChart = new Chart(swim_ctx, {
+            type: 'line',
+            data: {
+                labels: ["4/1","4/10", "4/20", "4/30"],
+                datasets: [{
+                    label: "スイム",
+                    data: [{
+                      x: "4/4",
+                      y: 20
+                    }, {
+                      x: "4/12",
+                      y: 100
+                    }, {
+                      x: "4/28",
+                      y: 30
+                    }],
+                    backgroundColor: '#66CCFF',
+                    borderColor: '#66CCFF',
+                    fill: false,
+                    lineTension: 0
+                  }]},
+            options: {
+              scales: {
+                  xAxes: [{
+                    type: 'time',
+                    time: {
+                        displayFormats: {
+                            quarter: 'MMM YYYY'
+                        }
+                    }
+                  }]
               }
-          });
-          
-          var run_ctx = document.getElementById("runChart").getContext('2d');
-          var runChart = new Chart(run_ctx, {
-              type: 'line',
-              data: {
-                  labels: ["4/1","4/10", "4/20", "4/30"],
-                  datasets: [{
-                      label: "ラン",
-                      data: [{
-                        x: "4/4",
-                        y: 2
-                      }, {
-                        x: "4/12",
-                        y: 10
-                      }, {
-                        x: "4/28",
-                        y: 3
-                      }],
-                      backgroundColor: '#ff6347',
-                      borderColor: '#ff6347',
-                      fill: false,
-                      lineTension: 0
-                    }]},
-              options: {
-                scales: {
-                    xAxes: [{
-                      type: 'time',
-                      time: {
-                          displayFormats: {
-                              quarter: 'MMM YYYY'
-                          }
-                      }
-                    }]
-                }
+            }
+        });
+
+        var bike_ctx = document.getElementById("bikeChart").getContext('2d');
+        var bikeChart = new Chart(bike_ctx, {
+            type: 'line',
+            data: {
+                labels: ["4/1","4/10", "4/20", "4/30"],
+                datasets: [{
+                    label: "バイク",
+                    data: [{
+                      x: "4/4",
+                      y: 20
+                    }, {
+                      x: "4/12",
+                      y: 100
+                    }, {
+                      x: "4/28",
+                      y: 30
+                    }],
+                    backgroundColor: '#66CC33',
+                    borderColor: '#66CC33',
+                    fill: false,
+                    lineTension: 0
+                  }]},
+            options: {
+              scales: {
+                  xAxes: [{
+                    type: 'time',
+                    time: {
+                        displayFormats: {
+                            quarter: 'MMM YYYY'
+                        }
+                    }
+                  }]
               }
-          });
-          </script>
-        </section>
+            }
+        });
+        
+        var run_ctx = document.getElementById("runChart").getContext('2d');
+        var runChart = new Chart(run_ctx, {
+            type: 'line',
+            data: {
+                labels: ["4/1","4/10", "4/20", "4/30"],
+                datasets: [{
+                    label: "ラン",
+                    data: [{
+                      x: "4/4",
+                      y: 2
+                    }, {
+                      x: "4/12",
+                      y: 10
+                    }, {
+                      x: "4/28",
+                      y: 3
+                    }],
+                    backgroundColor: '#ff6347',
+                    borderColor: '#ff6347',
+                    fill: false,
+                    lineTension: 0
+                  }]},
+            options: {
+              scales: {
+                  xAxes: [{
+                    type: 'time',
+                    time: {
+                        displayFormats: {
+                            quarter: 'MMM YYYY'
+                        }
+                    }
+                  }]
+              }
+            }
+        });
+        </script>
+      </section>
     </main>
   </div>    
 </div>

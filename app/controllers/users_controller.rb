@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @monthly_record = @user.microposts.where({ month: Time.current.month, 
     year: Time.current.year })
+    @micropost = @user.microposts.build
   end
   
   def new
