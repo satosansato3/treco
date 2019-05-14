@@ -1,6 +1,7 @@
 /* global $ */
 /* global Chart */
 /* global gon */
+/* global moment */
 
 function chart_data(data_array, category) {
   let data = [];
@@ -33,10 +34,15 @@ document.addEventListener("turbolinks:load", function() {
             xAxes: [{
               type: 'time',
               time: {
-                  displayFormats: {
-                      unit: "day"
-                  }
-              },
+                displayFormats: {
+                    day: 'M/D'
+                }
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
             }]
         }
       }
@@ -59,11 +65,16 @@ document.addEventListener("turbolinks:load", function() {
             xAxes: [{
               type: 'time',
               time: {
-                  displayFormats: {
-                      unit: "day"
-                  }
+                displayFormats: {
+                    day: 'M/D'
+                }
               },
-            }]
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]            
         }
       }
   });
@@ -85,11 +96,16 @@ document.addEventListener("turbolinks:load", function() {
             xAxes: [{
               type: 'time',
               time: {
-                  displayFormats: {
-                      unit: "day"
-                  }
-              },
-            }]
+                displayFormats: {
+                    day: 'M/D'
+                }
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]            
         }
       }
 });
