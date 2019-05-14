@@ -22,7 +22,4 @@ document.addEventListener("turbolinks:load", function() {
     $("#training-wrapper").hide();
     $("#training-wrapper").removeClass("training-wrapper");
   })
-  
-
 })
-

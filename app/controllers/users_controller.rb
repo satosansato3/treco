@@ -5,8 +5,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @monthly_record = @user.microposts.where(date: (Time.now.beginning_of_month..
-                                                    Time.now.end_of_month))
+                                                    Time.now.end_of_month)).order("date DESC")
     @micropost = @user.microposts.build
+    gon.swim = []
+    gon.bike = []
+    gon.run = []
+    @monthly_record.find_each do |row|
+      gon.swim << { "date" => row["date"], "swim" => row["swim"] }
+      gon.bike << { "date" => row["date"], "bike" => row["bike"] }
+      gon.run << { "date" => row["date"], "run" => row["run"] }
+    end
+    gon.swim.sort_by!{|d| d["date"]}
+    gon.bike.sort_by!{|d| d["date"]}
+    gon.run.sort_by!{|d| d["date"]}
   end
   
   def new
